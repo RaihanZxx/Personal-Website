@@ -348,14 +348,26 @@ body {
     flex-grow: 1;
 }
 
+.project-links {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 0.5rem !important;
+    position: relative;
+    z-index: 1;
+    width: 100%;
+}
+
 .project-link {
-    display: inline-block;
+    display: block !important;
+    width: 100% !important;
     color: var(--accent);
     text-decoration: none;
     font-weight: 600;
     position: relative;
-    z-index: 1;
     transition: color var(--transition);
+    padding: 0 !important;
+    margin: 0 !important;
+    line-height: 1.5;
 }
 
 .project-link::after {
@@ -365,6 +377,10 @@ body {
 
 .project-link:hover::after {
     transform: translateX(5px);
+}
+
+.project-link.demo-link::after {
+    content: ' →';
 }
 
 /* Contact Section */

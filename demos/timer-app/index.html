@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TimerApps-CLI Demo - HanSoBored</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../styles.css?t=2025102144">
+    <link rel="stylesheet" href="styles.css?t=2025102144">
+</head>
+<body>
+    <div class="cursor"></div>
+    
+    <nav class="navbar">
+        <div class="nav-content">
+            <div class="logo"><a href="../../" style="text-decoration: none; color: inherit;">HanSoBored</a></div>
+            <ul class="nav-links">
+                <li><a href="../../#home" class="nav-link">Home</a></li>
+                <li><a href="../../#about" class="nav-link">About</a></li>
+                <li><a href="../../#projects" class="nav-link">Projects</a></li>
+                <li><a href="../../#contact" class="nav-link">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="demo-page">
+        <div class="demo-header">
+            <a href="../../#projects" class="back-btn">← Back to Projects</a>
+            <h1>TimerApps-CLI Demo</h1>
+            <p class="demo-subtitle">App Usage Limiter Visualization</p>
+        </div>
+
+        <div class="container">
+            <div class="demo-content">
+                <!-- Timer Section -->
+                <div class="demo-section">
+                    <h2>Active Timer</h2>
+                    <div class="timer-wrapper">
+                        <canvas id="timerCanvas" width="250" height="250"></canvas>
+                        <div class="timer-text">
+                            <div class="timer-time">45m</div>
+                            <div class="timer-limit">of 60m</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Usage Analytics -->
+                <div class="demo-section">
+                    <h2>Today's Usage</h2>
+                    <div class="usage-bars">
+                        <div class="usage-item">
+                            <div class="app-name">Instagram</div>
+                            <div class="usage-bar">
+                                <div class="usage-fill instagram" style="width: 0%" data-target="75"></div>
+                            </div>
+                            <div class="usage-time">45m / 60m</div>
+                        </div>
+                        <div class="usage-item">
+                            <div class="app-name">TikTok</div>
+                            <div class="usage-bar">
+                                <div class="usage-fill tiktok" style="width: 0%" data-target="100"></div>
+                            </div>
+                            <div class="usage-time">30m / 30m</div>
+                        </div>
+                        <div class="usage-item">
+                            <div class="app-name">YouTube</div>
+                            <div class="usage-bar">
+                                <div class="usage-fill youtube" style="width: 0%" data-target="40"></div>
+                            </div>
+                            <div class="usage-time">24m / 60m</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Terminal Commands -->
+                <div class="terminal">
+                    <div class="terminal-header">
+                        <div class="traffic-lights">
+                            <div class="light red"></div>
+                            <div class="light yellow"></div>
+                            <div class="light green"></div>
+                        </div>
+                    </div>
+                        <div class="terminal-content">
+                        <div class="terminal-line">$ timer set com.instagram.android 60</div>
+                        <div class="terminal-line success">✓ Instagram limit set to 60 minutes</div>
+                        <div class="terminal-line">$ timer status</div>
+                        <div class="terminal-line success">📱 Active: Instagram (45m / 60m)</div>
+                        <div class="terminal-line">$ timer list -v</div>
+                        <div class="terminal-line success">✓ Instagram - 45m / 60m - Active</div>
+                        <div class="terminal-line success">✓ TikTok - 30m / 30m - Limit Reached ⚠️</div>
+                        <div class="terminal-line success">✓ YouTube - 24m / 60m</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Features -->
+                <div class="demo-section full-width">
+                    <h2>Key Features</h2>
+                    <div class="features-grid">
+                        <div class="feature-item">
+                            <div class="feature-icon">⏱️</div>
+                            <div class="feature-name">Smart Timer</div>
+                            <div class="feature-desc">Pauses when app closes</div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">🔒</div>
+                            <div class="feature-name">Auto-Block</div>
+                            <div class="feature-desc">Freezes apps at limit</div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">📊</div>
+                            <div class="feature-name">Analytics</div>
+                            <div class="feature-desc">Daily usage tracking</div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">🔔</div>
+                            <div class="feature-name">Notifications</div>
+                            <div class="feature-desc">Termux API alerts</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CTA Section -->
+                <div class="demo-cta">
+                    <a href="https://github.com/RaihanZxx/TimerApps-CLI" target="_blank" class="cta-btn primary">View on GitHub</a>
+                    <a href="../../#projects" class="cta-btn secondary">Back to Projects</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>&copy; 2025 HanSoBored. All rights reserved.</p>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <script src="../../app.js?t=2025102144"></script>
+    <script src="script.js?t=2025102144"></script>
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body { font-family: Arial; padding: 20px; }
+        .terminal {
+            background: #1e1e1e;
+            color: #00ff00;
+            padding: 15px;
+            border-radius: 8px;
+            font-family: monospace;
+            margin: 20px 0;
+            height: 200px;
+            overflow-y: auto;
+        }
+        .terminal-line {
+            margin: 5px 0;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Debug Terminal Animation</h1>
+    
+    <button onclick="testTerminalAnimation()">Test Terminal Animation</button>
+    <button onclick="testCanvas()">Test Canvas Animation</button>
+    
+    <div class="terminal" id="terminal">
+        <div class="terminal-line">$ timer set com.instagram.android 60</div>
+        <div class="terminal-line">✓ Instagram limit set to 60 minutes</div>
+        <div class="terminal-line">$ timer status</div>
+        <div class="terminal-line">📱 Active: Instagram (45m / 60m)</div>
+    </div>
+    
+    <canvas id="timerCanvas" width="250" height="250" style="border: 1px solid #ccc; margin-top: 20px;"></canvas>
+    
+    <p id="status">Status: Loading...</p>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <script>
+        document.getElementById('status').textContent = 'Status: anime.js loaded = ' + (typeof anime !== 'undefined');
+        
+        function testTerminalAnimation() {
+            console.log('Testing terminal animation...');
+            const lines = document.querySelectorAll('#terminal .terminal-line');
+            console.log('Found lines:', lines.length);
+            
+            lines.forEach((line, index) => {
+                console.log(`Line ${index}:`, line.textContent);
+                setTimeout(() => {
+                    console.log(`Animating line ${index}`);
+                    anime({
+                        targets: line,
+                        opacity: 1,
+                        duration: 400,
+                        easing: 'easeOutQuad'
+                    });
+                }, index * 80);
+            });
+        }
+        
+        function testCanvas() {
+            console.log('Testing canvas animation...');
+            const canvas = document.getElementById('timerCanvas');
+            const ctx = canvas.getContext('2d');
+            
+            const animationObj = { progress: 0 };
+            
+            anime({
+                targets: animationObj,
+                progress: 0.75,
+                duration: 1200,
+                easing: 'easeOutQuad',
+                update: () => {
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    
+                    // Background
+                    ctx.strokeStyle = '#e0e0e0';
+                    ctx.lineWidth = 10;
+                    ctx.beginPath();
+                    ctx.arc(125, 125, 80, 0, 2 * Math.PI);
+                    ctx.stroke();
+                    
+                    // Progress
+                    ctx.strokeStyle = '#000000';
+                    ctx.lineWidth = 10;
+                    ctx.lineCap = 'round';
+                    ctx.beginPath();
+                    const angle = animationObj.progress * 2 * Math.PI - Math.PI / 2;
+                    ctx.arc(125, 125, 80, -Math.PI / 2, angle);
+                    ctx.stroke();
+                }
+            });
+        }
+        
+        window.addEventListener('load', () => {
+            document.getElementById('status').textContent = 'Status: Ready! Click buttons to test.';
+        });
+    </script>
+</body>
+</html>

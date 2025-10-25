@@ -15,6 +15,8 @@ if (cursor) {
 
 // Typewriter effect function
 function typewriterEffect(element, speed = 50) {
+    if (!element) return;
+    
     const text = element.textContent;
     element.textContent = '';
     
@@ -37,7 +39,10 @@ function typewriterEffect(element, speed = 50) {
 
 // Typewriter animations on page load
 setTimeout(() => {
-    typewriterEffect(document.querySelector('.hero-subtitle'), 40);
+    const heroSubtitle = document.querySelector('.hero-subtitle');
+    if (heroSubtitle) {
+        typewriterEffect(heroSubtitle, 40);
+    }
 }, 100);
 
 // Blob animation
@@ -123,7 +128,7 @@ window.addEventListener('scroll', () => {
     const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
     
     if (scrollTop > 100) {
-        navbar.style.boxShadow = '0 2px 20px rgba(0, 217, 255, 0.1)';
+        navbar.style.boxShadow = 'none';
     } else {
         navbar.style.boxShadow = 'none';
     }
